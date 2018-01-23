@@ -4,6 +4,15 @@ LABEL maintainer "Unsalted"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+# Obtain Cuda Toolkit
+
+
+RUN dpkg -i cuda-repo-ubuntu1604_9.1.85-1_amd64.deb \ 
+sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub \ 
+sudo apt-get update -y \
+sudo apt-get install cuda -y
+
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
   ca-certificates \
   wget \
@@ -16,7 +25,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean -y
 
-ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs:${LIBRARY_PATH}
+ENV LIBRARY_PATH /usr/local/cuda-9.1/lib64/stubs:${LIBRARY_PATH} \
+PATH /usr/local/cuda-9.1/bin${PATH:+:${PATH}} \ 
+LD_LIBRARY_PATH /usr/local/cuda-9.1/lib64 \
+LD_LIBRARY_PATH /usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 WORKDIR /miner
 
@@ -62,7 +74,7 @@ RUN wget \
 # install nicehash
 
 
-RUN git clone https://github.com/nicehash/nheqminer.git \
+RUN git clone https://github.com/andrewpsp/docker-nheqminer-cuda.git \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh \
