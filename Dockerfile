@@ -1,4 +1,5 @@
-FROM nvidia/cuda:8.0-runtime-ubuntu16.04
+#Pull the latest and greatest version of cuda
+FROM  nvidia/cuda
 LABEL maintainer "Unsalted"
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -17,7 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV LIBRARY_PATH /usr/local/cuda/lib64/stubs:${LIBRARY_PATH}
 
-WORKDIR /tmp
+WORKDIR /miner
 
 # install boost 1.62+
 ARG boost_version=1.62.0
