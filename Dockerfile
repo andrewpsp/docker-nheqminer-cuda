@@ -31,7 +31,7 @@ ENV LIBRARY_PATH /usr/local/cuda-9.1/lib64/stubs:${LIBRARY_PATH} \
 
 
 WORKDIR /tmp
-
+COPY . /tmp
 # install boost 1.62+
 RUN apt-get install libboost-all-dev -y
 
@@ -47,8 +47,9 @@ RUN git clone https://github.com/entercloud-local-dev/nheqminer.git \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh 
-  RUN cd ../../../ && mkdir build && cd build 
-  RUN cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer 
+  RUN cd /tmp && cd fine 
+  #RUN cd ../../../ && mkdir build && cd build 
+  #RUN cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer 
   RUN echo "Cmake complete" 
   RUN make -j $(nproc) 
   RUN echo "Make complete" 
