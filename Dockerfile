@@ -68,16 +68,16 @@ RUN apt-get install cmake -y
 
 
 RUN git clone https://github.com/andrewpsp/docker-nheqminer-cuda.git \
-  && chmod -R 777 nheqminer \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh \
   && cd /miner \
   && mkdir build/ \
   && cd build/ \
+  && chmod +x /usr/local/bin/nheqminer 
   && cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer  \
   && make -j $(nproc) \
-  && cp ./nheqminer /usr/local/bin/nheqminer \
+  && cp ./nheqminer /usr/local/bin/nheqminer 
 
 RUN rm -rf /miner/*
 RUN useradd -ms /bin/bash nheqminer
