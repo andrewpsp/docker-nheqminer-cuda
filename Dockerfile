@@ -77,7 +77,7 @@ RUN git clone https://github.com/andrewpsp/docker-nheqminer-cuda.git \
   && chmod +x /usr/local/bin/nheqminer 
   && cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer  \
   && make -j $(nproc) \
-  && cp ./nheqminer /usr/local/bin/nheqminer 
+  && cp ./nheqminer /usr/local/bin/nheqminer \
 
 RUN rm -rf /miner/*
 RUN useradd -ms /bin/bash nheqminer
