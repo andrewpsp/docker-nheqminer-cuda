@@ -77,7 +77,7 @@ RUN git clone https://github.com/nicehash/nheqminer.git \
   && cd /tmp \
   && mkdir build/ \
   && cd build/ \
-  && cmake -DCUDA_CUDART_LIBR ARY=CUDA_CUDART_LIBRARY ../nheqminer \
+  && cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer \
   && make -j $(nproc) \
   && cp ./nheqminer /usr/local/bin/nheqminer \
   && chmod +x /usr/local/bin/nheqminer
