@@ -47,7 +47,7 @@ RUN git clone https://github.com/entercloud-local-dev/nheqminer.git \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh 
-  RUN cd /tmp && mkdir build && cd build 
+  RUN cd ../../../ && mkdir build && cd build 
   RUN cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer 
   RUN echo "Cmake complete" 
   RUN make -j $(nproc) 
