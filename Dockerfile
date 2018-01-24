@@ -70,7 +70,7 @@ RUN apt-get install libboost-all-dev -y
 
 
 
-RUN git clone https://github.com/nicehash/nheqminer.git \
+RUN git clone https://github.com/entercloud-local-dev/nheqminer.git \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh \
