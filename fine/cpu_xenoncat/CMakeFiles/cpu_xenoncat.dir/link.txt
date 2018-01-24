@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcpu_xenoncat.a  CMakeFiles/cpu_xenoncat.dir/xenoncat.cpp.o
+/usr/bin/ranlib libcpu_xenoncat.a

@@ -1,0 +1,5 @@
+/usr/local/lib/libcpu_xenoncat.a
+/usr/local/include/cpu_xenoncat/cpu_xenoncat.hpp
+/usr/local/lib/libcuda_djezo.a
+/usr/local/include/cuda_djezo/cuda_djezo.hpp
+/usr/local/include/cuda_djezo/eqcuda.hpp

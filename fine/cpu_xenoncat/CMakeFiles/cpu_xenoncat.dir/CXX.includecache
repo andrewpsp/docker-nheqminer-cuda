@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/code/nheqminer/cpu_xenoncat/cpu_xenoncat.hpp
+
+/home/ubuntu/code/nheqminer/cpu_xenoncat/xenoncat.cpp
+iostream
+-
+functional
+-
+vector
+-
+stdint.h
+-
+Windows.h
+-
+string.h
+-
+stdlib.h
+-
+cpu_xenoncat.hpp
+/home/ubuntu/code/nheqminer/cpu_xenoncat/cpu_xenoncat.hpp
+

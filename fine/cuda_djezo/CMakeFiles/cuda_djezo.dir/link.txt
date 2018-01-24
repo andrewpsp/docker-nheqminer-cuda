@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcuda_djezo.a  CMakeFiles/cuda_djezo.dir/cuda_djezo.cpp.o CMakeFiles/cuda_djezo.dir/cuda_djezo_generated_equi_miner.cu.o
+/usr/bin/ranlib libcuda_djezo.a
