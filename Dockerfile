@@ -1,5 +1,5 @@
 #Pull the latest and greatest version of cuda
-FROM  nvidia/cuda
+FROM  andrewpsp/cuda-9.1
 LABEL maintainer "Unsalted"
 
 ARG DEBIAN_FRONTEND=noninteractive
