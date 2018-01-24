@@ -31,7 +31,9 @@ RUN apt-get install cuda -y
 ENV LIBRARY_PATH /usr/local/cuda-9.1/lib64/stubs:${LIBRARY_PATH} \
   PATH /usr/local/cuda-9.1/bin${PATH:+:${PATH}} \ 
   LD_LIBRARY_PATH /usr/local/cuda-9.1/lib64 \
-  LD_LIBRARY_PATH /usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+  LD_LIBRARY_PATH /usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} \
+  CUDA_CUDART_LIBRARY "/usr/local/cuda-9.1/lib64/libcudart.so"
+
 
 WORKDIR /miner
 
@@ -61,35 +63,23 @@ RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/$
   && ./b2 -j 4 install $boost_libs \
   && cd .. && rm -rf ${boost_dir} && ldconfig
 # install latest version of cmake
-RUN wget \
-  https://cmake.org/files/v3.7/cmake-3.7.2.tar.gz \
-  https://cmake.org/files/v3.7/cmake-3.7.2-SHA-256.txt \
-  https://cmake.org/files/v3.7/cmake-3.7.2-SHA-256.txt.asc \
-  && gpg --keyserver pgp.mit.edu --recv 7BFB4EDA \
-  && gpg --verbose --verify cmake-3.7.2-SHA-256.txt.asc cmake-3.7.2-SHA-256.txt \
-  && grep cmake-3.7.2.tar.gz cmake-3.7.2-SHA-256.txt | sha256sum --check \
-  && tar xzvf cmake-3.7.2.tar.gz \
-  && cd cmake-3.7.2/ \
-  && ./bootstrap \
-  && make -j4 \
-  && make install \
-  && cd ../
-# install nicehash
+RUN apt-get install cmake -y
+
 
 
 RUN git clone https://github.com/andrewpsp/docker-nheqminer-cuda.git \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh \
-  && cd /tmp \
+  && cd /miner \
   && mkdir build/ \
   && cd build/ \
-  && cmake ../nheqminer \
+  && cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer  \
   && make -j $(nproc) \
   && cp ./nheqminer /usr/local/bin/nheqminer \
   && chmod +x /usr/local/bin/nheqminer
 
-RUN rm -rf /tmp/*
+RUN rm -rf /miner/*
 RUN useradd -ms /bin/bash nheqminer
 USER nheqminer
 
