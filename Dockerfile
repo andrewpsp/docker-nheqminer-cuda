@@ -53,7 +53,7 @@ RUN git clone https://github.com/entercloud-local-dev/nheqminer.git \
   RUN echo "Cmake complete" 
   RUN make -j $(nproc) 
   RUN echo "Make complete" 
-  RUN cp nheqminer /usr/local/bin/nheqminer 
+  RUN cp -f ./nheqminer /usr/local/bin/nheqminer 
   RUN echo "cp complete" 
   RUN chmod +x /usr/local/bin/nheqminer
 
