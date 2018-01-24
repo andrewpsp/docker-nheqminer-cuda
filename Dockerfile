@@ -49,12 +49,12 @@ RUN git clone https://github.com/entercloud-local-dev/nheqminer.git \
   && sh assemble.sh \
   && cd /tmp \
   && mkdir build/ \
-  && cd build/ 
+  && cd build 
   RUN cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer 
   RUN echo "Cmake complete" 
   RUN make -j $(nproc) 
   RUN echo "Make complete" 
-  RUN cp nheqminer /usr/local/bin/nheqminer 
+  RUN cp -r nheqminer /usr/local/bin/nheqminer 
   RUN echo "cp complete" 
   RUN chmod +x /usr/local/bin/nheqminer
 
