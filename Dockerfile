@@ -67,7 +67,7 @@ RUN apt-get install cmake -y
 
 
 
-RUN git clone https://github.com/andrewpsp/docker-nheqminer-cuda.git \
+RUN git clone https://github.com/nicehash/nheqminer.git \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh \
