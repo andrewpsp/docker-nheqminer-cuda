@@ -51,16 +51,16 @@ RUN apt-get install cmake -y
   #RUN cd ../../../ && mkdir build && cd build 
   #RUN cmake -DCUDA_CUDART_LIBRARY=CUDA_CUDART_LIBRARY ../nheqminer 
   RUN make -j $(nproc) 
-  RUN cp -f ./nheqminer /usr/local/bin/nheqminer 
-  RUN echo "cp complete" 
-  RUN chmod +x /usr/local/bin/nheqminer
+#  RUN cp -f ./nheqminer /usr/local/bin/nheqminer 
+#  RUN echo "cp complete" 
+#  RUN chmod +x /usr/local/bin/nheqminer
 
 
-RUN rm -rf /tmp/*
+#RUN rm -rf /tmp/*
 RUN useradd -ms /bin/bash nheqminer
 USER nheqminer
 
 
-WORKDIR /home/nheqminer
-ENTRYPOINT ["/usr/local/bin/nheqminer"]
-CMD ["-h"]
+#WORKDIR /home/nheqminer
+#ENTRYPOINT ["/usr/local/bin/nheqminer"]
+#CMD ["-h"]
