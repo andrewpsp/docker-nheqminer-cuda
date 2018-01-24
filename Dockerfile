@@ -64,8 +64,8 @@ RUN wget http://downloads.sourceforge.net/project/boost/boost/${boost_version}/$
   && cd .. && rm -rf ${boost_dir} && ldconfig
 # install latest version of cmake
 
-RUN apt-get install cmake -y \ 
-  apt-get install libboost-all-dev -y
+RUN apt-get install cmake -y 
+RUN apt-get install libboost-all-dev -y
 
 
 
