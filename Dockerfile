@@ -35,7 +35,7 @@ ENV LIBRARY_PATH /usr/local/cuda-9.1/lib64/stubs:${LIBRARY_PATH} \
   CUDA_CUDART_LIBRARY "/usr/local/cuda-9.1/lib64/libcudart.so"
 
 
-WORKDIR /miner
+WORKDIR /tmp
 
 # install boost 1.62+
 ARG boost_version=1.62.0
@@ -71,16 +71,16 @@ RUN git clone https://github.com/nicehash/nheqminer.git \
   && chmod +x nheqminer/cpu_xenoncat/asm_linux/* \
   && cd nheqminer/cpu_xenoncat/asm_linux \
   && sh assemble.sh \
-  && cd /miner \
+  && cd /tmp \
   && mkdir build/ \
   && cd build/ \
- RUN cmake -DCUDA_CUDART_LIBR ARY=CUDA_CUDART_LIBRARY ../nheqminer  \
+  && cmake ../nheqminer  \
   && make -j $(nproc) \
   && cp ./nheqminer /usr/local/bin/nheqminer \
   && chmod +x /usr/local/bin/nheqminer
 
 
-RUN rm -rf /miner/*
+RUN rm -rf /tmp/*
 RUN useradd -ms /bin/bash nheqminer
 USER nheqminer
 
