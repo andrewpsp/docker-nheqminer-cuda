@@ -32,7 +32,7 @@ ENV LIBRARY_PATH /usr/local/cuda-9.1/lib64/stubs:${LIBRARY_PATH} \
   PATH /usr/local/cuda-9.1/bin${PATH:+:${PATH}} \ 
   LD_LIBRARY_PATH /usr/local/cuda-9.1/lib64 \
   LD_LIBRARY_PATH /usr/local/cuda-9.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} \
-  CUDA_CUDART_LIBRARY "/usr/local/cuda-9.1/lib64/libcudart.so"
+  CUDA_CUDART_LIBRARY /usr/local/cuda-9.1/lib64/libcudart.so
 
 
 WORKDIR /tmp
