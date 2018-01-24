@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   ca-certificates \
   wget \
   g++ \
-  git \
+  git 
   
   
 RUN wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.1.85-1_amd64.deb  
